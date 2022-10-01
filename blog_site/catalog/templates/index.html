@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Blogger</h1>
+<p>Welcome to <em>Blogger</em>, a little site were you may adding your experions and thikns about differet topiks.</p>
+
+
+<h3>At this moment we have</h3>
+
+  <ul>
+    <li><strong>Posts:</strong> {{ num_posts }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Comments:</strong> {{ num_comments }}</li>
+
+  </ul>
+<p>Made by <em>Danil Shvecov</em></p>
+  {% load static %}
+
+{% endblock %}
+
+

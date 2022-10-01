@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+
+  <p><strong>Author:</strong> {{ post.author }}</p>
+  <p><strong>Publish date:</strong> {{ post.publish_date }}</p>
+  <h4>{{ post.description }}</h4>
+
+  <div style="margin-left:10px;margin-top:20px">
+      <p><strong>Comments:</strong></p>
+    </div>
+  <div style="margin-left:30px;margin-top:30px">
+  {% for comment in post.comment_set.all %}
+      <p>{{comment.comment_text}}</p>
+  {% endfor %}
+  </div>
+
+{% if user.is_authenticated %}
+
+<li><a href="{% url 'comment_create' post.id %}"> Add comment</a> </li>
+{% else %}
+<li><p>If you want add comment you must <a href="{% url 'login'%}?next={{request.path}}">Login</a></p></li>
+{%endif%}
+
+
+{% endblock %}

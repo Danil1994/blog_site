@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ author.name }}</h1>
+
+  {% if info %}
+  <p><strong>About author</strong> </p> <!-- author detail link not yet defined -->
+  <p>{{author.info}}</p>
+  {%endif%}
+
+  <p><strong>Posts:</strong></p>
+
+  <div style="margin-left:30px;margin-top:30px">
+  {% for post in author.post_set.all %}
+      <p><a href="{{post.get_absolute_url}}">{{post.title}}</a>  {{post.publish_date}}</p>
+<!-- итерации по каждой копии/экземпляру книги -->
+  {% endfor %}
+  </div>
+
+{% endblock %}

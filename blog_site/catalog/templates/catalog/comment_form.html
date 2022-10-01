@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+
+  <p><strong>Author:</strong> {{ post.author }}</p>
+  <p><strong>Publish date:</strong> {{ post.publish_date }}</p>
+  <h4>{{ post.description }}</h4>
+
+{% if user.is_authenticated %}
+    <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Add comment" />
+    </form>
+{%endif%}
+
+{% endblock %}
